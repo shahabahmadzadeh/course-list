@@ -36,7 +36,10 @@ const courses = [
 
 
 function App() {
-  return <h1 className="">01-CourseList-project: starter file</h1>;
+  return <div>
+    <h1>shahab ahmadzadeh</h1>
+    <h2>test</h2>
+  </div>
 }
 
 export default App;
