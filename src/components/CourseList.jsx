@@ -23,7 +23,13 @@ function CourseList() {
                 <span className="badge badge--secondary">React.js</span>
               </div>
               <div className="caption">
-                <p className="date">Aug 2, 2021</p>
+                <p className="date">
+                  {new Date().toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </p>
                 <span className="badge badge--secondary">Complated</span>
               </div>
             </div>
@@ -34,4 +40,4 @@ function CourseList() {
   );
 }
 
-export default CourseList
+export default CourseList;
