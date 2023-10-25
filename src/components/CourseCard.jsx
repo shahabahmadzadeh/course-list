@@ -1,42 +1,59 @@
-function CourseCard(props) {
+function CourseCard({ course }) {
   return (
     <div className="course-item">
       <div className="course-item__img">
-        <img src="/public/images/img1.jpg" alt="image-1" />
+        <img src={course.imageUrl} alt={course.title} />
       </div>
       <div className="course-item__detail">
-        <div className="course-item__body">
-          <div>
-            <p className="title">{props.course.title}</p>
-            <p>{props.course.description}</p>
-          </div>
-          <span className="rate">{props.course.rate}</span>
-        </div>
-
-        <div className="course-item__footer">
-          <div className="tags">
-            {props.course.tags.map((t) => (
-              <span key={t} className="badge badge--secondary">
-                React.js
-              </span>
-            ))}
-          </div>
-          <div className="caption">
-            <p className="date">
-              {new Date(props.course.start).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })}
-            </p>
-            <span className="badge badge--secondary">
-              {props.course.status}
-            </span>
-          </div>
-        </div>
+        <CourseCartBody
+          title={course.title}
+          description={course.description}
+          rate={course.rate}
+        />
+        <CourseCartFooter
+          tags={course.tags}
+          start={course.start}
+          status={course.status}
+        />
       </div>
     </div>
   );
 }
 
 export default CourseCard;
+
+function CourseCartBody({ title, description, rate }) {
+  return (
+    <div className="course-item__body">
+      <div>
+        <p className="title">{title}</p>
+        <p>{description}</p>
+      </div>
+      <span className="rate">{rate}</span>
+    </div>
+  );
+}
+
+function CourseCartFooter({ tags, start, status }) {
+  return (
+    <div className="course-item__footer">
+      <div className="tags">
+        {tags.map((t) => (
+          <span key={t} className="badge badge--secondary">
+            React.js
+          </span>
+        ))}
+      </div>
+      <div className="caption">
+        <p className="date">
+          {new Date(start).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })}
+        </p>
+        <span className="badge badge--secondary">{status}</span>
+      </div>
+    </div>
+  );
+}
