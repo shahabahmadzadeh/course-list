@@ -40,7 +40,7 @@ function CourseCartFooter({ tags, start, status }) {
       <div className="tags">
         {tags.map((t) => (
           <span key={t} className="badge badge--secondary">
-            React.js
+            {t}
           </span>
         ))}
       </div>
