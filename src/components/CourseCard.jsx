@@ -35,6 +35,12 @@ function CourseCartBody({ title, description, rate }) {
 }
 
 function CourseCartFooter({ tags, start, status }) {
+  const startedAt = new Date(start).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+
   return (
     <div className="course-item__footer">
       <div className="tags">
@@ -45,14 +51,18 @@ function CourseCartFooter({ tags, start, status }) {
         ))}
       </div>
       <div className="caption">
-        <p className="date">
-          {new Date(start).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })}
-        </p>
-        <span className="badge badge--secondary">{status}</span>
+        <p className="date">{startedAt}</p>
+        <span
+          className={`badge ${
+            status === "Active"
+              ? "badge--primary"
+              : status === "Upcoming"
+              ? "badge--danger"
+              : "badge--secondary"
+          }`}
+        >
+          {status}
+        </span>
       </div>
     </div>
   );
